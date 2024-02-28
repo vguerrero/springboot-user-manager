@@ -7,7 +7,9 @@ import java.util.List;
 
 public interface UserService {
 
-    UserDTO createUser(User user, String token) throws Exception;
+    UserDTO createUser(User user, String token) ;
+
+    boolean validateEmail(String email);
 
     User getUserById(Long userId);
 

@@ -18,7 +18,6 @@ public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
 
-
     @Value("${regexEmailPattern}")
     private String emailPattern;
 
@@ -27,22 +26,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDTO createUser(User user, String token) throws Exception {
-
-        if (user != null) {
-            if (!validateEmail(user.getEmail())) {
-                throw new Exception("el correo no tiene formato correcto");
-            }
-            if (this.getUserByEmail(user.getEmail()) != null) {
-                throw new Exception("El correo ya esta registrado");
-            }
-
+    public UserDTO createUser(User user, String token) {
             return mapUserToUserDTO(userRepository.save(user), token);
-        } else {
-            throw new Exception("llene los datos del usuario");
-        }
+    }
 
-
+    public boolean validateEmail(String email) {
+        return Pattern.compile(emailPattern)
+                .matcher(email)
+                .matches();
     }
 
     private UserDTO mapUserToUserDTO(User user, String token) {
@@ -54,11 +45,7 @@ public class UserServiceImpl implements UserService {
         return new UserDTO(String.valueOf(user.getId()), user.getCreated(), user.getModified(), user.getLast_login(), user.getToken(), user.isIsactive());
     }
 
-    private boolean validateEmail(String email) {
-        return Pattern.compile(emailPattern)
-                .matcher(email)
-                .matches();
-    }
+
 
     @Override
     public User getUserById(Long userId) {
