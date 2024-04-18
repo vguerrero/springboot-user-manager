@@ -27,7 +27,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDTO createUser(User user, String token) {
-            return mapUserToUserDTO(userRepository.save(user), token);
+        this.setDefaultValues(user, token);
+        return mapUserToUserDTO(userRepository.save(user));
     }
 
     public boolean validateEmail(String email) {
@@ -36,12 +37,15 @@ public class UserServiceImpl implements UserService {
                 .matches();
     }
 
-    private UserDTO mapUserToUserDTO(User user, String token) {
+    private void setDefaultValues(User user, String token){
         user.setCreated(new Date());
         user.setModified(new Date());
         user.setLast_login(new Date());
         user.setToken(token);
         user.setIsactive(true);
+    }
+
+    private UserDTO mapUserToUserDTO(User user) {
         return new UserDTO(String.valueOf(user.getId()), user.getCreated(), user.getModified(), user.getLast_login(), user.getToken(), user.isIsactive());
     }
 

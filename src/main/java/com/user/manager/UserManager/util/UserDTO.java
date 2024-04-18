@@ -71,4 +71,16 @@ public class UserDTO {
         this.token = token;
         this.isactive = isactive;
     }
+
+    @Override
+    public String toString() {
+        return "UserDTO{" +
+                "id='" + id + '\'' +
+                ", created=" + created +
+                ", modified=" + modified +
+                ", last_login=" + last_login +
+                ", token='" + token + '\'' +
+                ", isactive=" + isactive +
+                '}';
+    }
 }
