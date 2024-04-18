@@ -42,7 +42,8 @@ http://localhost:8081/api/swagger-ui/index.html
 ![diagrama solucion.drawio (1).png](evidence%2Fdiagrama%20solucion.drawio%20%281%29.png)
 
 
-
+*tambien se agrega la coleccion de postman con los request del servicio
+[SmartJobs_Test.postman_collection.json](evidence%2FSmartJobs_Test.postman_collection.json)
 
  
 

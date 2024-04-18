@@ -1,0 +1,97 @@
+{
+	"info": {
+		"_postman_id": "2ff382f0-7998-4bb1-86b5-d0c49b93ffe0",
+		"name": "SmartJobs_Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7401836"
+	},
+	"item": [
+		{
+			"name": "getAuth",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/auth/login?user=victorg",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					],
+					"query": [
+						{
+							"key": "user",
+							"value": "victorg"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "guardarusuario",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aWN0b3JnIiwiaWF0IjoxNzEzNDQ4ODYzfQ.62M_NoZAaAuruImpbPQ3hv7G13Dif4uPrzkYldFcks4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"juana\",\n  \"email\":\"juanak@yopmail.com\",\n  \"password\":\"micasa\",\n  \"phones\":[\n    {\n        \"number\":\"898898\",\n        \"citycode\":\"07\",\n        \"citynumber\":\"01\"\n    }\n  ]\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "todos los usuarios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/user/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"user",
+						"all"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
